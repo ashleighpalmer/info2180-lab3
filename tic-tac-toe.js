@@ -22,7 +22,7 @@ window.onload = function(){
 
 
     for (let z=0; z<=8; z++){
-        e[z].setAttributes("class", "square");
+        e[z].setAttribute("class", "square");
 
     }
 
@@ -47,7 +47,7 @@ window.onload = function(){
                 continue;
             }  
             if (pos1=== pos2 && pos2 === pos3){
-                status.innerHTML= 'Congratulations!' + pos1 +' is the winner';                
+                status.innerHTML= 'Congratulations! ' + pos1 +' is the winner';                
                 status.classList.add('you-won');
                 break;
             }  
