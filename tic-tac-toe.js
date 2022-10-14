@@ -23,9 +23,27 @@ window.onload = function(){
 
     for (let z=0; z<=8; z++){
         e[z].setAttribute("class", "square");
-
     }
 
+    const user= (element,index) =>{
+        console.log(element.innerText)
+        if(element.innerText !== 'X' || element.innerText !== 'O'){
+            element.innerText= play;
+            element.classList.add(play);
+            poslst[index]=play;
+            console.log(poslst);
+            verifywin();
+            if(play === 'X'){
+                play='O';
+            }
+            else
+            {
+                play='X';
+            }
+        }
+
+    }
+    
     e.forEach( (element, index) => {
         element.addEventListener('click', () => user(element, index));
         element.addEventListener('mouseover', function(){
@@ -33,6 +51,18 @@ window.onload = function(){
         });
         element.addEventListener('mouseout', function(){
             element.classList.remove('hover');
+        });
+    });
+   
+    
+    button.addEventListener('click', ()=>{
+        poslst=['', '', '', '', '', '', '', '', ''];
+        status.innerHTML= 'Move your mouse over a square and click to play an X or an O.'
+        status.classList.remove('you-won');
+        e.forEach(element =>{
+            element.innerText ='';
+            element.classList.remove('X');
+            element.classList.remove('O');
         });
     });
 
@@ -54,40 +84,4 @@ window.onload = function(){
 
         }
     }
-        
-    const user= (element,index) =>{
-        console.log(element.innerText)
-        if(element.innerText !== 'X' || element.innerText !== 'O'){
-            element.innerText= play;
-            element.classList.add(play);
-            poslst[index]=play;
-            console.log(poslst);
-            verifywin();
-            if(play === 'X'){
-                play='O';
-            }
-            else
-            {
-                play='X';
-            }
-        }
-
-    }
-
-    
-
-    
-    
-    button.addEventListener('click', ()=>{
-        poslst=['', '', '', '', '', '', '', '', ''];
-        status.innerHTML= 'Move your mouse over a square and click to play an X or an O.'
-        status.classList.remove('you-won');
-        e.forEach(element =>{
-            element.innerText ='';
-            element.classList.remove('X');
-            element.classList.remove('O');
-        });
-    });
-
-    
 }
